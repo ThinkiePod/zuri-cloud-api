@@ -1,0 +1,134 @@
+<style>
+  /* Navbar styles */
+  nav {
+    background: #a367bb;
+    padding: 1rem 0;
+
+    position: relative;
+    z-index: 10;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  nav a.logo img {
+    height: 2rem;
+    width: auto;
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+
+  /* Hamburger button */
+  nav .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  nav .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    nav .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #a367bb;
+      width: 100%;
+      flex-direction: column;
+      display: none;
+    }
+
+    nav .nav-links.show {
+      display: flex;
+    }
+
+    nav .nav-links a {
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/images/logo.png" alt="Zuri Logo" />
+      Zuri API
+    </a>
+
+    <div
+      class="hamburger"
+      id="hamburger"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+    >
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="/api/v2">Home</a>
+      <a href="/api/v2/docs">Swagger UI</a>
+      <a href="/api/v2/redoc">ReDoc</a>
+      <a href="/api/v2/health">Health Check</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  hamburger.addEventListener("click", () => {
+    const isShown = navLinks.classList.toggle("show");
+    hamburger.setAttribute("aria-expanded", isShown);
+  });
+
+  // Optional: allow toggle with keyboard Enter or Space
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+</script>

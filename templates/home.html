@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zuri API Documentation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f4edf8;
+      }
+      .navbar {
+        background: #5e9cf3;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+      .logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+      .card {
+        background: #ecf8ea;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #a367bb;
+      }
+      .card h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+      .card ul {
+        list-style: none;
+      }
+      .card li {
+        padding: 0.25rem 0;
+        color: #555;
+      }
+      .endpoint {
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin: 0.5rem 0;
+        font-family: monospace;
+      }
+      .method {
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        color: white;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+      }
+      .get {
+        background: #28a745;
+      }
+      .post {
+        background: #007bff;
+      }
+      .patch {
+        background: #fd7e14;
+      }
+      .delete {
+        background: #dc3545;
+      }
+      .quick-start {
+        background: #e8f5e9;
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+      .code-block {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    {{ navbar_html|safe }}
+
+    <div class="container">
+      <div class="hero">
+        <h1>Zuri Device Management API</h1>
+        <p>
+          Complete API for managing Zuri devices, content library, WiFi
+          provisioning, and real-time device control.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>📱 Device Management</h3>
+          <ul>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/devices/register
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/devices/{id}/heartbeat
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method get">GET</span>/devices
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/devices/{id}/pair
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method patch">PATCH</span>/devices/{id}/wifi
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>📚 Content Management</h3>
+          <ul>
+            <li>
+              <div class="endpoint">
+                <span class="method get">GET</span>/content/library
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/content/library
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method delete">DELETE</span>/content/library/{id}
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>🎮 Device Control</h3>
+          <ul>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/devices/{id}/command
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/playback/play
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/playback/stop
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/devices/{id}/settings
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>📊 Analytics & System</h3>
+          <ul>
+            <li>
+              <div class="endpoint">
+                <span class="method post">POST</span>/analytics/usage
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method get">GET</span>/analytics/usage/{id}
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method get">GET</span>/health
+              </div>
+            </li>
+            <li>
+              <div class="endpoint">
+                <span class="method get">GET</span>/stats
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quick-start">
+        <h3>🚀 Quick Start</h3>
+        <p>Test the API with these example requests:</p>
+        <div class="code-block">
+          # Health check curl http://localhost:8000/health # Get all devices
+          curl http://localhost:8000/devices # Get system stats curl
+          http://localhost:8000/stats # Register a device curl -X POST
+          http://localhost:8000/devices/register \\ -H "Content-Type:
+          application/json" \\ -d '{"device_id": "ZR-TEST", "device_name": "Test
+          Device", "ip_address": "192.168.1.100"}'
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🔌 WebSocket Endpoints</h3>
+          <ul>
+            <li><div class="endpoint">WS /ws/device/{device_id}</div></li>
+            <li><div class="endpoint">WS /ws/mobile</div></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>📖 Documentation</h3>
+          <p>Explore the complete API documentation:</p>
+          <ul>
+            <li><a href="/docs">Swagger UI</a> - Interactive API testing</li>
+            <li><a href="/redoc">ReDoc</a> - Beautiful documentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {{ footer_html|safe }}
+  </body>
+</html>
