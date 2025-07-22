@@ -335,4 +335,4 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ## 📞 Support
 
-For technical support or questions, please [contact information or issue tracker].
+For technical support or questions, please open an issue in the [GitHub Issue Tracker](../../issues).
